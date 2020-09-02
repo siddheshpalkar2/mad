@@ -139,9 +139,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getAnswer(postFix: Array<String>) {
-        val stack = Stack<Int>()
+        val stack = Stack<Double>()
         postFix.forEach {
-            if (it.isDigitsOnly()) stack.push(it.toInt())
+            if (it.isDigitsOnly()) stack.push(it.toDouble())
             else {
                 if (stack.size > 1) {
                     val right = stack.pop()
@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
                         "+" -> stack.push(left + right)
                         "/" -> {
                             try {
-                                val value = left / right
+                                val value = left.toDouble() / right.toDouble()
                                 stack.push(value)
                             } catch (e: Exception){
                                 e.printStackTrace()
